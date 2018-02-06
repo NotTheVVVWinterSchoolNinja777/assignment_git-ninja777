@@ -54,7 +54,7 @@ int main()
     int num=request.get(0).asInt();
 
     // process the payload
-    bool isNumEven= num & 1;    // FILL IN THE CODE
+    bool isNumEven= !(num & 1);    // FILL IN THE CODE
 
     bool isNumPrime=isPrime(num);   // FILL IN THE CODE
 
@@ -62,8 +62,8 @@ int main()
     string parity=(isNumEven?"even":"odd");
     string primality=(isNumPrime?"prime":"composite");
     Bottle response;
-    response.addString("parity-dummy");     // FILL IN THE CODE
-    response.addString("primality-dummy");  // FILL IN THE CODE
+    response.addString(parity);     // FILL IN THE CODE
+    response.addString(primality);  // FILL IN THE CODE
 
     // send back the response
     port.reply(response);
