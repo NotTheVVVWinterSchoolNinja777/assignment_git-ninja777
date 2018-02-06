@@ -13,6 +13,24 @@
 using namespace std;
 using namespace yarp::os;
 
+bool  isPrime(int num){
+    if (num <= 1) {
+        return false;
+    }
+    else if (num <= 3){
+        return true;
+    }
+    else if (num % 2 == 0 || num % 3 == 0){
+        return false;
+    }
+    for (int i = 5; i*i <= num; i++){
+        if (num%i == 0 || num % (i + 2) == 0){
+            return false;
+        }
+    }
+    return true;
+}
+
 /***************************************************/
 int main()
 {
@@ -36,8 +54,9 @@ int main()
     int num=request.get(0).asInt();
 
     // process the payload
-    bool isNumEven=true;    // FILL IN THE CODE
-    bool isNumPrime=true;   // FILL IN THE CODE
+    bool isNumEven= num & 1;    // FILL IN THE CODE
+
+    bool isNumPrime=isPrime(num);   // FILL IN THE CODE
 
     // build the response
     string parity=(isNumEven?"even":"odd");
